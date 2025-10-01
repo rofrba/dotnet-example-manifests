@@ -1,0 +1,41 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: s2i-dotnetcore-ex
+  namespace: dotnet-example
+  labels:
+    app: s2i-dotnetcore-ex
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: s2i-dotnetcore-ex
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: s2i-dotnetcore-ex
+        deployment: s2i-dotnetcore-ex
+    spec:
+      containers:
+        - name: s2i-dotnetcore-ex
+          image: PATCH_ME
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

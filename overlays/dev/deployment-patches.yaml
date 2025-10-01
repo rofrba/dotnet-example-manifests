@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: s2i-dotnetcore-ex
+  annotations:
+    image.openshift.io/triggers: |-
+      [
+        {
+          "from": {
+            "kind": "ImageStreamTag",
+            "name": "s2i-dotnetcore-ex:latest"
+          },
+          "fieldPath": "spec.template.spec.containers[0].image"
+        }
+      ]
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: s2i-dotnetcore-ex
+        image: image-registry.openshift-image-registry.svc:5000/dotnet-example/s2i-dotnetcore-ex:latest
