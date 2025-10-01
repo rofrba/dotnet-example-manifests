@@ -7,4 +7,4 @@ patches:
 - path: ./deployment-patches.yaml
   target:
     kind: Deployment
-    name: s2i-dotnetcore-ex
+    name: s2i-dotnetcore-gitops
