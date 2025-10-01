@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: s2i-dotnetcore-ex
+  name: s2i-dotnetcore-gitops
   annotations:
     image.openshift.io/triggers: |-
       [
@@ -18,5 +18,5 @@ spec:
   template:
     spec:
       containers:
-      - name: s2i-dotnetcore-ex
+      - name: s2i-dotnetcore-gitops
         image: image-registry.openshift-image-registry.svc:5000/dotnet-example/s2i-dotnetcore-ex:latest

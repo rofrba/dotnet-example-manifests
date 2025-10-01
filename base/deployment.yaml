@@ -1,24 +1,24 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: s2i-dotnetcore-ex
+  name: s2i-dotnetcore-gitops
   namespace: dotnet-example
   labels:
-    app: s2i-dotnetcore-ex
+    app: s2i-dotnetcore-gitops
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: s2i-dotnetcore-ex
+      app: s2i-dotnetcore-gitops
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: s2i-dotnetcore-ex
-        deployment: s2i-dotnetcore-ex
+        app: s2i-dotnetcore-gitops
+        deployment: s2i-dotnetcore-gitops
     spec:
       containers:
-        - name: s2i-dotnetcore-ex
+        - name: s2i-dotnetcore-gitops
           image: PATCH_ME
           ports:
             - containerPort: 8080
